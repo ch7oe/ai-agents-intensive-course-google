@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 from google.genai import types
 
 
-def setup_api_key():
+def get_api_key():
     """Configure Gemini API key from .env file.
     Finds .env in project root directory
     """
@@ -16,8 +16,6 @@ def setup_api_key():
     api_key = os.getenv("GOOGLE_API_KEY")
     if not api_key:
         raise ValueError("GOOGLE_API_KEY not found.")
-    
-    print("Gemini API key setup complete.")
 
     return api_key
 
