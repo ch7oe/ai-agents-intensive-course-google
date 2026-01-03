@@ -5,7 +5,7 @@ from google.adk.runners import InMemoryRunner
 from google.adk.tools.google_search_tool import google_search
 from utils.helpers import get_retry_config, get_api_key
 
-async def main(prompt: str):
+async def main(query: str):
     
     get_api_key() # validate if api key exists. ADK picks up the key automatically from env vars
     retry_config = get_retry_config()
@@ -23,7 +23,7 @@ async def main(prompt: str):
     )
 
     runner = InMemoryRunner(agent=root_agent)
-    response = await runner.run_debug(prompt) # debug mode returns list of events/messages capturing every step in interaction
+    response = await runner.run_debug(query) # debug mode returns list of events/messages capturing every step in interaction
 
     print("\n--- EVENTS ---")
     for event in response:
@@ -31,5 +31,5 @@ async def main(prompt: str):
 
 
 if __name__ == "__main__":
-    user_prompt = "What is today's date?"
-    asyncio.run(main(user_prompt))
+    user_query = "What is today's date?"
+    asyncio.run(main(user_query))
