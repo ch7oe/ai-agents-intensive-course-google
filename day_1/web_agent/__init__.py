@@ -1,1 +1,1 @@
-from . import agent
+from . import simple_agent
