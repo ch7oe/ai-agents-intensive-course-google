@@ -1,6 +1,6 @@
 import asyncio
-from .agent import currency_agent, enhanced_currency_agent
-from utils.helpers import get_api_key
+from .agent import enhanced_currency_agent
+from utils.helpers import get_api_key, show_python_code_and_result
 from google.adk.runners import InMemoryRunner
 
 
@@ -14,9 +14,11 @@ async def main(query: str):
     enhanced_runner = InMemoryRunner(agent=enhanced_currency_agent)
     response = await enhanced_runner.run_debug(query)
 
-    print("---EVENTS---\n")
-    for event in response:
-        print(event)
+    # print("---EVENTS---\n")
+    # for event in response:
+    #     print(event)
+
+    show_python_code_and_result(response)
 
 
 if __name__ == "__main__":
